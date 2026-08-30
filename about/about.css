@@ -1,0 +1,118 @@
+.about-sections {
+  border-top: 1px solid var(--line);
+}
+
+.about-section {
+  padding: 42px 0 46px;
+  border-bottom: 1px solid rgba(191, 201, 205, .72);
+}
+
+.about-section h2,
+.about-section h3 {
+  font-weight: 400;
+}
+
+.about-section h2 {
+  margin: 0 0 28px;
+  color: var(--soft);
+  font: 10px Georgia, serif;
+  letter-spacing: .28em;
+}
+
+.about-section h3 {
+  margin: 28px 0 8px;
+  color: var(--ink-deep);
+  font: 11px Georgia, "Yu Mincho", serif;
+  letter-spacing: .18em;
+}
+
+.about-section p {
+  margin: 0 0 18px;
+}
+
+.terms-note {
+  margin-top: 34px;
+  padding: 25px 28px 10px;
+  border: 1px solid rgba(191, 201, 205, .72);
+  color: var(--soft);
+  font-size: 11px;
+}
+
+.terms-note h3 {
+  margin-top: 0;
+  color: var(--soft);
+}
+
+.site-data {
+  margin: 29px 0 34px;
+}
+
+.site-data div {
+  display: grid;
+  grid-template-columns: 54px 1fr;
+  gap: 14px;
+  padding: 5px 0;
+}
+
+.site-data dt {
+  color: var(--soft);
+  font: 10px Georgia, serif;
+  letter-spacing: .13em;
+}
+
+.site-data dd {
+  margin: 0;
+}
+
+.site-data a {
+  border-bottom: 1px solid var(--line);
+}
+
+.banner-options {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 30px;
+}
+
+.banner-options figure {
+  margin: 0;
+}
+
+.banner-options a {
+  display: block;
+  width: fit-content;
+  border: 1px solid rgba(64, 88, 102, .22);
+}
+
+.banner-options img {
+  width: auto;
+  max-width: 100%;
+}
+
+.banner-options figcaption {
+  margin-top: 7px;
+  color: var(--soft);
+  font: 9px Georgia, serif;
+  letter-spacing: .1em;
+}
+
+.about-meta {
+  margin: 42px 0 0;
+  color: var(--soft);
+  font-size: 10px;
+}
+
+@media (max-width: 460px) {
+  .about-section {
+    padding: 35px 0 39px;
+  }
+
+  .terms-note {
+    padding: 21px 20px 7px;
+  }
+
+  .banner-options {
+    gap: 24px 18px;
+  }
+}
