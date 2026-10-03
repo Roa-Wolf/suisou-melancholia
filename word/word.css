@@ -1,0 +1,187 @@
+/* scoop — 沈んだお題を、一題だけ水面へ引き上げる */
+
+.scoop {
+  margin: 0 0 64px;
+  padding: 14px 0 0;
+  border-top: 1px solid var(--line);
+  text-align: center;
+}
+
+.scoop .section-label {
+  text-align: left;
+}
+
+.scoop button {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  cursor: pointer;
+}
+
+.scoop-trigger {
+  position: relative;
+  margin: 18px 0 6px;
+  padding: 3px 2px 7px !important;
+  font-size: 13px !important;
+  letter-spacing: .24em !important;
+}
+
+.scoop-trigger::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: var(--line);
+  transition: background .4s;
+}
+
+.scoop-trigger:hover::after,
+.scoop-trigger:focus-visible::after {
+  background: var(--ink);
+}
+
+.scoop button:focus-visible,
+.scoop a:focus-visible {
+  outline: 1px dotted var(--ink);
+  outline-offset: 4px;
+}
+
+/* 水面：結果が浮かぶ場所 */
+.scoop-surface {
+  position: relative;
+  min-height: 18px;
+  margin: 10px auto 0;
+  max-width: 560px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.scoop-surface::before {
+  content: "";
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  bottom: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--line) 30%, var(--line) 70%, transparent);
+  transform: scaleX(.35);
+  opacity: .5;
+  transition: transform 1.4s ease, opacity 1.4s ease;
+}
+
+.scoop.has-risen .scoop-surface {
+  min-height: 132px;
+  margin-top: 26px;
+}
+
+.scoop-surface.is-risen::before {
+  transform: scaleX(1);
+  opacity: 1;
+}
+
+.scoop-line {
+  margin: 0;
+  color: var(--ink-deep);
+  font-size: 17px;
+  line-height: 2;
+  letter-spacing: .16em;
+  opacity: 0;
+  filter: blur(6px);
+  transform: translateY(16px);
+}
+
+.scoop-from {
+  margin: 10px 0 22px;
+  color: var(--soft);
+  font: 10px Georgia, "Yu Mincho", serif;
+  letter-spacing: .22em;
+  opacity: 0;
+  transition: opacity 1.2s ease .9s;
+}
+
+.scoop-surface.is-risen .scoop-line {
+  animation: scoop-rise 1.6s cubic-bezier(.2, .7, .2, 1) forwards;
+}
+
+.scoop-surface.is-risen .scoop-from {
+  opacity: 1;
+}
+
+.scoop-surface.is-sinking .scoop-line {
+  animation: scoop-sink .7s ease-in forwards;
+}
+
+.scoop-surface.is-sinking .scoop-from {
+  opacity: 0;
+  transition-delay: 0s;
+}
+
+@keyframes scoop-rise {
+  0% { opacity: 0; filter: blur(6px); transform: translateY(16px); }
+  60% { opacity: .85; filter: blur(.6px); }
+  100% { opacity: 1; filter: blur(0); transform: translateY(0); }
+}
+
+@keyframes scoop-sink {
+  0% { opacity: 1; filter: blur(0); transform: translateY(0); }
+  100% { opacity: 0; filter: blur(5px); transform: translateY(14px); }
+}
+
+.scoop-actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px 28px;
+  margin-top: 18px;
+  color: var(--soft);
+  font-size: 11px;
+}
+
+.scoop-actions[hidden] {
+  display: none;
+}
+
+.scoop-actions button:hover,
+.scoop-actions a:hover {
+  color: var(--ink-deep);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scoop-surface::before,
+  .scoop-from {
+    transition: none;
+  }
+
+  .scoop-surface.is-risen .scoop-line,
+  .scoop-surface.is-sinking .scoop-line {
+    animation: none;
+    filter: none;
+    transform: none;
+  }
+
+  .scoop-surface.is-risen .scoop-line {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 700px) {
+  .scoop {
+    margin-bottom: 48px;
+  }
+
+  .scoop.has-risen .scoop-surface {
+    min-height: 120px;
+  }
+
+  .scoop-line {
+    font-size: 15px;
+    letter-spacing: .1em;
+  }
+}
