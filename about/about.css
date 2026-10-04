@@ -101,14 +101,18 @@
   scroll-margin-top: 28px;
 }
 
+.contact-data dd {
+  min-width: 0;
+}
+
 .contact-mail {
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-  max-width: 100%;
-  padding: 8px 0;
-  border-bottom: 1px solid var(--line);
-  overflow-wrap: anywhere;
+  position: relative;
+}
+
+.contact-mail::after {
+  content: "";
+  position: absolute;
+  inset: -16px 0;
 }
 
 .contact-mail:focus-visible {
